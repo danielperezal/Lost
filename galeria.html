@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOST - Galería</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" href="pictures/dharmita.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="pictures/dharma-logo.png" alt="Logo Iniciativa Dharma"></a>
+        </div>
+        <nav class="nav" id="main-nav">
+            <ul>
+                <li><a href="index.html#home">Inicio</a></li>
+                <li><a href="cast.html">Reparto</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Temporadas</a>
+                    <div class="dropdown-content">
+                        <a href="temporadas/temporada1.html">Temporada 1</a>
+                        <a href="temporadas/temporada2.html">Temporada 2</a>
+                        <a href="temporadas/temporada3.html">Temporada 3</a>
+                        <a href="temporadas/temporada4.html">Temporada 4</a>
+                        <a href="temporadas/temporada5.html">Temporada 5</a>
+                        <a href="temporadas/temporada6.html">Temporada 6</a>
+                    </div>
+                </li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="misterios.html">Misterios</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" id="hamburger-button" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <main class="main-content">
+        <section class="container">
+            <div class="full-width-column">
+                <h2>Galería de Imágenes</h2>
+                <div class="gallery-container">
+                    <div class="main-image-container">
+                        <a class="gallery-nav prev" id="prev-btn">&#10094;</a>
+                        <img id="main-image" src="pictures/01.jpg" alt="Imagen de la galería 1">
+                        <a class="gallery-nav next" id="next-btn">&#10095;</a>
+                    </div>
+                    <div class="thumbnail-container">
+                        <a class="thumb-nav prev" id="thumb-prev-btn">&#10094;</a>
+                        <div class="thumbnail-scroller" id="thumbnail-scroller">
+                            <div class="thumbnail-grid" id="thumbnail-grid">
+                                <!-- Las miniaturas se generarán aquí con JavaScript -->
+                            </div>
+                        </div>
+                        <a class="thumb-nav next" id="thumb-next-btn">&#10095;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Fansite de LOST. Todos los derechos reservados.</p>
+        <div class="social-icons">
+            <a href="https://x.com/lostofficial" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com/officiallosttv/?hl=es" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/LOST/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.youtube.com/@gettinglostdoc" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica para el menú hamburguesa
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerButton = document.getElementById('hamburger-button');
+            const mainNav = document.getElementById('main-nav');
+
+            hamburgerButton.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const images = [
+                'pictures/01.jpg', 'pictures/02.jpg', 'pictures/03.jpg', 'pictures/04.jpg',
+                'pictures/05.jpg', 'pictures/06.jpg', 'pictures/07.jpg', 'pictures/08.jpg',
+                'pictures/09.jpg', 'pictures/10.jpg', 'pictures/11.jpg', 'pictures/12.jpg',
+                'pictures/13.jpg', 'pictures/14.jpg', 'pictures/15.jpg', 'pictures/16.jpg'
+            ];
+
+            const mainImage = document.getElementById('main-image');
+            const thumbnailGrid = document.getElementById('thumbnail-grid');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const thumbScroller = document.getElementById('thumbnail-scroller');
+            const mainImageContainer = document.querySelector('.main-image-container');
+            const thumbPrevBtn = document.getElementById('thumb-prev-btn');
+            const thumbNextBtn = document.getElementById('thumb-next-btn');
+
+            let currentIndex = 0;
+
+            // Generar miniaturas
+            images.forEach((src, index) => {
+                const thumb = document.createElement('img');
+                thumb.src = src;
+                thumb.alt = `Miniatura ${index + 1}`;
+                thumb.classList.add('thumbnail');
+                thumb.dataset.index = index;
+                if (index === 0) {
+                    thumb.classList.add('active');
+                }
+                thumbnailGrid.appendChild(thumb);
+            });
+
+            const thumbnails = document.querySelectorAll('.thumbnail');
+
+            function updateMainImage(newIndex, direction) {
+                const oldIndex = currentIndex;
+                if (newIndex === oldIndex) return;
+
+                currentIndex = newIndex;
+
+                // Determinar la dirección del deslizamiento si no se proporciona
+                if (!direction) {
+                    direction = newIndex > oldIndex ? 'right' : 'left';
+                }
+
+                // Aplicar clase de salida
+                mainImage.classList.add(direction === 'right' ? 'slide-out-left' : 'slide-out-right');
+
+                mainImage.addEventListener('transitionend', () => {
+                    // Cambiar la imagen una vez que la transición de salida ha terminado
+                    mainImage.src = images[currentIndex];
+
+                    // Quitar la clase de salida y preparar la entrada
+                    mainImage.classList.remove('slide-out-left', 'slide-out-right');
+                    
+                    // Forzar un reflow para reiniciar la transición (importante)
+                    void mainImage.offsetWidth;
+
+                }, { once: true }); // El listener se ejecuta solo una vez
+
+                // Actualizar la miniatura activa
+                thumbnails.forEach(thumb => thumb.classList.remove('active'));
+                thumbnails[currentIndex].classList.add('active');
+
+                // Centrar la miniatura activa solo en dispositivos con puntero fino (como un mouse)
+                // para evitar saltos no deseados en dispositivos táctiles (móviles/tablets).
+                if (window.matchMedia('(pointer: fine)').matches) {
+                    thumbnails[currentIndex].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+                }
+            }
+
+            // Event Listeners para flechas de imagen principal
+            nextBtn.addEventListener('click', (event) => {
+                event.preventDefault(); // Evita el salto de página en móviles
+                const newIndex = (currentIndex + 1) % images.length;
+                updateMainImage(newIndex, 'right');
+            });
+
+            prevBtn.addEventListener('click', (event) => {
+                event.preventDefault(); // Evita el salto de página en móviles
+                const newIndex = (currentIndex - 1 + images.length) % images.length;
+                updateMainImage(newIndex, 'left');
+            });
+
+            // Event Listeners para miniaturas
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', () => {
+                    const newIndex = parseInt(thumb.dataset.index);
+                    updateMainImage(newIndex);
+                });
+            });
+
+            // Event Listeners para el scroll de miniaturas
+            thumbNextBtn.addEventListener('click', () => {
+                thumbScroller.scrollBy({ left: 300, behavior: 'smooth' });
+            });
+
+            thumbPrevBtn.addEventListener('click', () => {
+                thumbScroller.scrollBy({ left: -300, behavior: 'smooth' });
+            });
+
+            // --- Lógica para deslizar (Swipe) en la imagen principal ---
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            mainImageContainer.addEventListener('touchstart', (event) => {
+                // Solo nos interesa el primer punto de contacto
+                touchStartX = event.changedTouches[0].screenX;
+            }, { passive: true });
+
+            mainImageContainer.addEventListener('touchend', (event) => {
+                touchEndX = event.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50; // Distancia mínima en píxeles para considerar un swipe
+
+                if (touchStartX - touchEndX > swipeThreshold) {
+                    // Swipe hacia la izquierda (siguiente imagen)
+                    nextBtn.click();
+                } else if (touchEndX - touchStartX > swipeThreshold) {
+                    // Swipe hacia la derecha (imagen anterior)
+                    prevBtn.click();
+                }
+            }
+        });
+    </script>
+</body>
+</html>

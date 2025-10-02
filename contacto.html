@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOST - Contacto</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" href="pictures/dharmita.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="pictures/dharma-logo.png" alt="Logo Iniciativa Dharma"></a>
+        </div>
+        <nav class="nav" id="main-nav">
+            <ul>
+                <li><a href="index.html#home">Inicio</a></li>
+                <li><a href="cast.html">Reparto</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Temporadas</a>
+                    <div class="dropdown-content">
+                        <a href="temporadas/temporada1.html">Temporada 1</a>
+                        <a href="temporadas/temporada2.html">Temporada 2</a>
+                        <a href="temporadas/temporada3.html">Temporada 3</a>
+                        <a href="temporadas/temporada4.html">Temporada 4</a>
+                        <a href="temporadas/temporada5.html">Temporada 5</a>
+                        <a href="temporadas/temporada6.html">Temporada 6</a>
+                    </div>
+                </li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="misterios.html">Misterios</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" id="hamburger-button" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <main class="main-content">
+        <section class="container">
+            <div class="full-width-column">
+                <div class="contact-intro">
+                    <h2>Contáctanos</h2>
+                    <p>¿Tenés alguna pregunta, teoría o simplemente querés hablar sobre LOST? No lo dudés y escribime!</p>
+                </div>
+                <div class="contact-layout">
+                    <div class="map-container">
+                        <h3>Donde Encontrarme</h3>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4734.54032426774!2d-58.507370896364606!3d-34.60459647006998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcb62d49542997%3A0x50fcf4d15deb42ea!2sJos%C3%A9%20Pedro%20Varela%204085%2C%20C1417%20Villa%20Devoto%2C%20Cdad.%20Aut%C3%B3noma%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1759289095797!5m2!1ses!2sar" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                    <form id="contact-form" action="#" method="POST" class="contact-form">
+                        <h3>Escríbeme</h3>
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" required>
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="email" id="email" name="email" required>
+                        <label for="mensaje">Mensaje:</label>
+                        <textarea id="mensaje" name="mensaje" rows="6" required></textarea>
+                        <button type="submit">Enviar Mensaje</button>
+                        <div id="success-message" class="success-message"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Fansite de LOST. Todos los derechos reservados.</p>
+        <div class="social-icons">
+            <a href="https://x.com/lostofficial" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com/officiallosttv/?hl=es" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/LOST/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.youtube.com/@gettinglostdoc" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica para el menú hamburguesa
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerButton = document.getElementById('hamburger-button');
+            const mainNav = document.getElementById('main-nav');
+
+            hamburgerButton.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const contactForm = document.getElementById('contact-form');
+            const successMessage = document.getElementById('success-message');
+
+            contactForm.addEventListener('submit', function(event) {
+                // Prevenimos el comportamiento por defecto del formulario (recargar la página)
+                event.preventDefault();
+
+                // Mostramos el mensaje de éxito
+                successMessage.textContent = '¡Mensaje enviado correctamente!';
+                successMessage.style.display = 'block';
+
+                // Limpiamos los campos del formulario
+                contactForm.reset();
+
+                // Ocultamos el mensaje después de 5 segundos
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            });
+        });
+    </script>
+</body>
+</html>

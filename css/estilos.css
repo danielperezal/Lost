@@ -1,0 +1,605 @@
+/* Estilos Generales */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #1a1a1a; /* Un fondo oscuro inspirado en Dharma */
+    color: #e0e0e0; /* Texto claro para contraste */
+    line-height: 1.6;
+}
+
+a {
+    color: #88c0d0; /* Un azul claro para enlaces, similar a los colores de Dharma */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Cabecera */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #0d0d0d;
+    border-bottom: 2px solid #333;
+}
+
+.header .logo img {
+    width: 80px; /* Tamaño ajustado para el logo */
+}
+
+.header .nav ul {
+    display: flex;
+    list-style: none;
+}
+
+.header .nav ul li {
+    margin-left: 20px;
+}
+
+/* Botón de Hamburguesa */
+.hamburger {
+    display: none; /* Oculto en escritorio */
+    background: none;
+    border: none;
+    color: #e0e0e0;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+/* Contenido Principal */
+.main-content {
+    flex: 1; /* Hace que el contenido principal crezca y empuje el footer hacia abajo */
+}
+
+.main-content .container {
+    display: flex;
+    padding: 2rem;
+    gap: 2rem; /* Espacio entre columnas */
+}
+
+.main-content .column-left {
+    flex: 1.2; /* Damos un poco más de espacio a la imagen */
+}
+
+.main-content .column-left h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.main-page-image {
+    /* No se necesita 'order' aquí */
+}
+
+.main-content .column-right {
+    flex: 1; /* La otra mitad del espacio */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Estilos para la página de Temporadas */
+.full-width-column {
+    width: 100%;
+}
+
+.full-width-column h1, .full-width-column h2 {
+    color: #ffffff;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.season-nav {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.season-nav a {
+    margin: 0 15px;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.season-section {
+    margin-bottom: 3rem;
+}
+
+.trailer {
+    position: relative;
+    padding-bottom: 56.25%; /* Proporción 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    background: #000;
+    margin-bottom: 2rem;
+}
+
+.trailer iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.episode-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.episode {
+    background-color: #252525;
+    padding: 1.5rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+.episode h4 {
+    color: #88c0d0;
+    margin-bottom: 0.5rem;
+}
+
+.rating {
+    margin-top: 1rem;
+    font-size: 1.2rem;
+    color: #ffc107; /* Color de estrella */
+}
+
+/* Estilos para el índice de temporadas */
+.season-index {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    text-align: center;
+}
+
+.season-card {
+    background-color: #252525;
+    padding: 2rem;
+    border: 1px solid #333;
+    border-radius: 5px;
+    font-size: 1.5rem;
+    text-align: left; /* Alinea el texto a la izquierda dentro de las tarjetas */
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.season-card:hover {
+    background-color: #333;
+    transform: translateY(-5px);
+    text-decoration: none;
+}
+
+/* Estilo para los nombres de los personajes en las tarjetas de reparto */
+.season-card h3 {
+    font-family: 'Playfair Display', serif;
+    color: #a0d8e8; /* Un azul un poco más claro para destacar */
+    margin-bottom: 0.75rem;
+}
+
+/* Espacio entre el nombre del actor y la descripción del personaje */
+.season-card p:first-of-type {
+    margin-bottom: 1rem;
+}
+
+
+/* Pie de Página */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #0d0d0d;
+    border-top: 2px solid #333;
+    font-size: 0.9rem;
+}
+
+.footer .social-icons a {
+    margin-left: 15px;
+    font-size: 1.2rem;
+}
+
+/* Estilos para el menú desplegable */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #0d0d0d;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.dropdown-content a {
+    color: #e0e0e0;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+}
+
+.dropdown-content a:hover {background-color: #333;}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Diseño Responsive */
+@media (max-width: 768px) {
+    .header .nav {
+        display: none; /* Ocultar el menú por defecto en móvil */
+        position: absolute;
+        top: 100%; /* Justo debajo del header */
+        left: 0;
+        width: 100%;
+        background-color: #0d0d0d;
+        border-top: 1px solid #333;
+    }
+
+    .header .nav.active {
+        display: block; /* Mostrar el menú cuando tenga la clase 'active' */
+    }
+
+    .header .nav ul {
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        padding: 1rem 0;
+    }
+
+    .header .nav ul li {
+        margin: 10px 0;
+        width: 100%;
+        text-align: center;
+    }
+
+    .main-content .container {
+        flex-direction: column;
+    }
+
+    /* Reordenamiento para la página de inicio en móvil: Título -> Imagen -> Texto */
+    .main-content .column-right {
+        order: -1; /* Mueve toda la columna de la imagen arriba */
+        margin-bottom: 1.5rem; /* Añade espacio debajo de la imagen */
+    }
+    .hamburger {
+        display: block; /* Mostrar el botón de hamburguesa en móvil */
+    }
+}
+
+/* Estilos para la página de contacto */
+.contact-intro {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.contact-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+/* Estilos para el formulario de contacto */
+.contact-form {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-form h3, .map-container h3 {
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.contact-form label {
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.contact-form input,
+.contact-form textarea {
+    margin-bottom: 1.5rem;
+    padding: 0.8rem;
+    background-color: #252525;
+    border: 1px solid #333;
+    color: #e0e0e0;
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.contact-form button {
+    padding: 0.8rem 1.5rem;
+    background-color: #88c0d0;
+    color: #0d0d0d;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.contact-form button:hover {
+    background-color: #a0d8e8;
+}
+
+/* Estilos para el mensaje de éxito del formulario */
+.success-message {
+    padding: 1rem;
+    margin-top: 1rem;
+    background-color: #2e7d32; /* Un verde oscuro para éxito */
+    color: #ffffff;
+    border: 1px solid #4caf50;
+    border-radius: 4px;
+    text-align: center;
+    display: none; /* Oculto por defecto */
+}
+
+/* Estilos para la página de Misterios */
+.mysteries-list {
+    margin-top: 2rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mysteries-list p {
+    background-color: #252525;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-left: 3px solid #88c0d0;
+}
+
+.mystery-image {
+    display: block;
+    max-width: 800px;
+    width: 100%;
+    margin: 1rem auto 2rem;
+    border-radius: 5px;
+    border: 2px solid #333;
+}
+
+/* Estilos para el contenedor del mapa */
+.map-container {
+    flex: 1;
+}
+
+.map-container iframe {
+    max-width: 100%;
+    width: 100%; /* Asegura que ocupe el espacio del contenedor */
+    height: 450px; /* Altura fija para el mapa */
+    border-radius: 5px;
+    border: 2px solid #333;
+}
+
+/* Apila el layout de contacto solo en pantallas angostas y verticales */
+@media (max-width: 992px) and (orientation: portrait) {
+    .contact-layout {
+        flex-direction: column;
+    }
+}
+
+/* Estilos para la Galería */
+.gallery-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 2rem auto;
+}
+
+.main-image-container {
+    position: relative;
+    margin-bottom: 1rem;
+    border: 3px solid #333;
+    border-radius: 5px;
+    background-color: #000;
+    overflow: hidden; /* Oculta partes de las flechas que se salgan */
+}
+
+/* Flechas de navegación de la galería */
+.gallery-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 1rem 0.5rem;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.5rem;
+    transition: background-color 0.3s;
+}
+
+.gallery-nav:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+}
+
+.gallery-nav.prev {
+    left: 0;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.gallery-nav.next {
+    right: 0;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+/* Estilo por defecto para la imagen principal de la galería */
+.main-image-container img {
+    display: block;
+    width: 100%;
+    height: 550px; /* Altura fija para escritorio */
+    object-fit: cover; /* Recorta la imagen para que llene el espacio sin deformarse */
+    transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out;
+}
+
+/* Contenedor de la tira de miniaturas */
+.thumbnail-container {
+    position: relative;
+}
+
+/* Contenedor de miniaturas con scroll */
+.thumbnail-scroller {
+    overflow-x: hidden; /* Oculta la barra de scroll */
+    padding-bottom: 0;
+    scroll-behavior: smooth;
+}
+
+.thumbnail-grid {
+    display: flex;
+    gap: 0.75rem;
+    padding: 5px 0;
+}
+
+.thumbnail {
+    flex-shrink: 0; /* Evita que las imágenes se encojan */
+    width: 120px;
+    height: 80px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid #444;
+    border-radius: 3px;
+    transition: transform 0.2s, border-color 0.2s;
+    opacity: 0.7;
+}
+
+.thumbnail:hover, .thumbnail.active {
+    transform: scale(1.05);
+    border-color: #88c0d0;
+    opacity: 1;
+}
+
+/* Flechas de navegación de las miniaturas */
+.thumb-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(13, 13, 13, 0.8);
+    color: white;
+    padding: 0.5rem 0.25rem;
+    cursor: pointer;
+    user-select: none;
+    z-index: 10;
+    transition: background-color 0.3s;
+}
+
+.thumb-nav:hover {
+    background-color: rgba(0, 0, 0, 1);
+    text-decoration: none;
+}
+
+.thumb-nav.prev { left: 0; border-radius: 0 3px 3px 0; }
+.thumb-nav.next { right: 0; border-radius: 3px 0 0 3px; }
+
+/* Clases para la transición de la galería */
+.slide-out-left {
+    opacity: 0;
+    transform: translateX(-20%);
+}
+.slide-out-right {
+    opacity: 0;
+    transform: translateX(20%);
+}
+
+/* Estilos para el video de introducción */
+.intro-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 200;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 1s ease-out;
+}
+
+.unmute-button {
+    position: absolute;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 210;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: #e0e0e0;
+    border: 1px solid #e0e0e0;
+    padding: 0.75rem 1.25rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.unmute-button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+.intro-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.page-content {
+    opacity: 0;
+    transition: opacity 1.5s ease-in;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.visible {
+    opacity: 1;
+}
+
+/* --- Media Queries para la Galería en Móviles --- */
+
+/* Móvil en modo Vertical (Portrait) */
+@media (max-width: 768px) and (orientation: portrait) {
+    .main-image-container { height: 45vh; }
+    .main-image-container img { height: 100%; object-fit: contain; }
+    .intro-container video {
+        object-fit: contain; /* Asegura que el video de intro se vea completo */
+    }
+}
+
+/* Móvil en modo Horizontal (Landscape) */
+@media (max-width: 926px) and (orientation: landscape) {
+    .main-image-container { height: 80vh; }
+    .main-image-container img { height: 100%; object-fit: contain; }
+    .main-content .column-right {
+        align-items: flex-start; /* Alinea la imagen arriba en modo horizontal */
+    }
+
+    .header {
+        position: static; /* Evita que el header sea fijo en horizontal */
+    }
+}

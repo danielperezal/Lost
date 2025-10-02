@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOST - Misterios</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" href="pictures/dharmita.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">
+            <a href="index.html"><img src="pictures/dharma-logo.png" alt="Logo Iniciativa Dharma"></a>
+        </div>
+        <nav class="nav" id="main-nav">
+            <ul>
+                <li><a href="index.html#home">Inicio</a></li>
+                <li><a href="cast.html">Reparto</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropbtn">Temporadas</a>
+                    <div class="dropdown-content">
+                        <a href="temporadas/temporada1.html">Temporada 1</a>
+                        <a href="temporadas/temporada2.html">Temporada 2</a>
+                        <a href="temporadas/temporada3.html">Temporada 3</a>
+                        <a href="temporadas/temporada4.html">Temporada 4</a>
+                        <a href="temporadas/temporada5.html">Temporada 5</a>
+                        <a href="temporadas/temporada6.html">Temporada 6</a>
+                    </div>
+                </li>
+                <li><a href="galeria.html">Galería</a></li>
+                <li><a href="misterios.html">Misterios</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" id="hamburger-button" aria-label="Abrir menú">
+            <i class="fas fa-bars"></i>
+        </button>
+    </header>
+
+    <main class="main-content">
+        <section class="container">
+            <div class="full-width-column">
+                <h2>Principales misterios de la Isla</h2>
+                <img src="pictures/isla.jpg" alt="La misteriosa isla de LOST" class="mystery-image">
+                <div class="mysteries-list">
+                    <p><strong>La Isla:</strong> Se convierte en un lugar con propiedades sobrenaturales, donde los supervivientes se enfrentan a fenómenos inexplicables, curaciones milagrosas y saltos en el tiempo.</p>
+                    <p><strong>El Humo Negro:</strong> Una enigmática y violenta entidad de humo negro que recorre la isla, capaz de juzgar y matar a sus habitantes. Su origen y propósito son uno de los mayores secretos.</p>
+                    <p><strong>Los Números (4 8 15 16 23 42):</strong> Una secuencia de números que aparece repetidamente a lo largo de la serie, desde el billete de lotería de Hurley hasta el código para evitar una catástrofe en la estación El Cisne.</p>
+                    <p><strong>La Escotilla:</strong> Una misteriosa escotilla metálica encontrada en la selva, que conduce a la estación subterránea El Cisne. Su propósito y el hombre que vive dentro, Desmond Hume, son un enigma central de la segunda temporada.</p>
+                    <p><strong>La Iniciativa DHARMA:</strong> Una misteriosa organización científica que llevó a cabo experimentos en la isla durante los años 70 y 80, dejando atrás estaciones de investigación abandonadas y un legado de preguntas sin respuesta.</p>
+                    <p><strong>Los Otros:</strong> Un grupo de habitantes de la isla que vivían allí mucho antes del accidente del vuelo 815. Liderados por Benjamin Linus, sus motivos y su historia son un misterio constante para los supervivientes.</p>
+                    <p><strong>Jacob y el Hombre de Negro:</strong> Dos figuras ancestrales y opuestas, responsables de atraer a la gente a la isla. Su conflicto es el corazón de la mitología de la serie y la lucha entre el bien y el mal.</p>
+                    <p><strong>Los Flash-Sideways:</strong> Una realidad alternativa presentada en la última temporada donde el vuelo 815 nunca se estrelló. El propósito de esta línea temporal es uno de los misterios más emotivos y filosóficos de la serie.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 Fansite de LOST. Todos los derechos reservados.</p>
+        <div class="social-icons">
+            <a href="https://x.com/lostofficial" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com/officiallosttv/?hl=es" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/LOST/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.youtube.com/@gettinglostdoc" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Lógica para el menú hamburguesa
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerButton = document.getElementById('hamburger-button');
+            const mainNav = document.getElementById('main-nav');
+
+            hamburgerButton.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

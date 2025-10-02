@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOST - Fansite</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="icon" href="pictures/dharmita.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Video de Introducción -->
+    <div id="intro-container" class="intro-container">
+        <video id="intro-video" autoplay muted playsinline>
+            <source src="pictures/iniciativa.mp4" type="video/mp4">
+            Tu navegador no soporta la etiqueta de video.
+        </video>
+        <button id="unmute-button" class="unmute-button">
+            <i class="fas fa-volume-up"></i> Activar Sonido
+        </button>
+    </div>
+
+    <!-- Contenido principal de la página (inicialmente oculto) -->
+    <div id="page-content" class="page-content">
+        <header class="header">
+            <div class="logo">
+                <a href="index.html"><img src="pictures/dharma-logo.png" alt="Logo Iniciativa Dharma"></a>
+            </div>
+            <nav class="nav" id="main-nav">
+                <ul>
+                    <li><a href="index.html#home">Inicio</a></li>
+                    <li><a href="cast.html">Reparto</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropbtn">Temporadas</a>
+                        <div class="dropdown-content">
+                            <a href="temporadas/temporada1.html">Temporada 1</a>
+                            <a href="temporadas/temporada2.html">Temporada 2</a>
+                            <a href="temporadas/temporada3.html">Temporada 3</a>
+                            <a href="temporadas/temporada4.html">Temporada 4</a>
+                            <a href="temporadas/temporada5.html">Temporada 5</a>
+                            <a href="temporadas/temporada6.html">Temporada 6</a>
+                        </div>
+                    </li>
+                    <li><a href="galeria.html">Galería</a></li>
+                    <li><a href="misterios.html">Misterios</a></li>
+                    <li><a href="contacto.html">Contacto</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger-button" aria-label="Abrir menú">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+
+        <main class="main-content">
+            <section class="container">
+                <div class="column-left">
+                    <h1>El Legado de LOST</h1>
+                    <p>Cuando LOST se estrenó en 2004, nadie podía prever el impacto monumental que tendría en el panorama televisivo. La serie no solo cautivó a millones de espectadores con sus misterios y personajes complejos, sino que redefinió las reglas de la narrativa en la pantalla chica, estableciendo una base sobre la cual se construirían muchas de las series más aclamadas de la actualidad.</p>
+                    <p>Su estructura narrativa, que combinaba una trama principal de supervivencia con flashbacks (y más tarde flashforwards y flash-sideways), permitió un desarrollo de personajes sin precedentes. A diferencia de los dramas episódicos tradicionales, LOST exigía la atención del espectador semana a semana, tejiendo una mitología intrincada que generaba teorías y debates constantes. Este formato de "caja de misterios", popularizado por el productor J.J. Abrams, se convirtió en un estándar para dramas de ciencia ficción y suspenso, enseñando a las audiencias a buscar pistas y a no esperar todas las respuestas de inmediato.</p>
+                    <p>Series contemporáneas como "Westworld", "Stranger Things" o incluso "The Good Place" deben parte de su ADN a LOST. Ya sea a través de sus grandes elencos corales, sus cronologías no lineales o la forma en que mezclan el desarrollo de personajes con un misterio central, la influencia es innegable. LOST demostró que el público estaba listo para historias ambiciosas y serializadas, allanando el camino para la "Edad de Oro" de la televisión que vivimos hoy.</p>
+                </div>
+                <div class="column-right">
+                    <img src="pictures/lost.jpg" alt="Imagen representativa de la serie LOST" class="main-page-image">
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Fansite de LOST. Todos los derechos reservados.</p>
+            <div class="social-icons">
+                <a href="https://x.com/lostofficial" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://www.instagram.com/officiallosttv/?hl=es" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.facebook.com/LOST/" target="_blank" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                <a href="https://www.youtube.com/@gettinglostdoc" target="_blank" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        window.addEventListener('load', () => {
+            const introContainer = document.getElementById('intro-container');
+            const pageContent = document.getElementById('page-content');
+
+            // Función para mostrar el contenido principal
+            const showMainContent = () => {
+                introContainer.style.opacity = '0';
+                setTimeout(() => {
+                    introContainer.style.display = 'none';
+                    pageContent.classList.add('visible');
+                }, 1000); // Coincide con la duración de la transición en CSS
+            };
+
+            // Comprobar si la URL tiene el ancla #home
+            if (window.location.hash === '#home') {
+                // Si tiene #home, saltar la intro directamente
+                introContainer.style.display = 'none'; // Ocultar sin transición
+                pageContent.classList.add('visible');
+                pageContent.style.opacity = '1'; // Asegurarse de que sea visible inmediatamente
+            } else {
+                // Si no, reproducir el video y luego mostrar el contenido
+                const introVideo = document.getElementById('intro-video');
+                introVideo.addEventListener('ended', showMainContent);
+
+                // Lógica para el botón de sonido
+                const unmuteButton = document.getElementById('unmute-button');
+                unmuteButton.addEventListener('click', () => {
+                    introVideo.muted = false;
+                    introVideo.currentTime = 0; // Reinicia el video
+                    introVideo.play();
+                    // Oculta el botón una vez que se ha hecho clic
+                    unmuteButton.style.display = 'none';
+                });
+            }
+        });
+
+        // Lógica para el menú hamburguesa
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerButton = document.getElementById('hamburger-button');
+            const mainNav = document.getElementById('main-nav');
+
+            hamburgerButton.addEventListener('click', () => {
+                mainNav.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
