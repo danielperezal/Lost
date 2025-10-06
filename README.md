@@ -10,3 +10,4 @@ Mariano, te paso los puntos a tener en cuenta de cosas que hice a propósito:
 - Los colores del sitio son acordes a la serie.
 - Todas las imágenes del sitio, ya sean JPG, GIF, PNG, o incluso el video, son locales.
 - En el formulario de contacto, se validará que la dirección de mail tenga el formato de dirección de mail, arroba, dominio. Y una vez enviado se dará el mensaje de envío exitoso.
+- Por último se testeó en modo web (escritorio), así como para celulares en Android y celulares iPhone, tanto vertical como horizontal.
